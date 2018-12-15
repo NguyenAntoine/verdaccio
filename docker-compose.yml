@@ -1,0 +1,24 @@
+version: "2"
+services:
+  verdaccio:
+    image: verdaccio/verdaccio
+    expose:
+      - 4873
+    networks:
+      - default
+      - reverse-proxy
+    restart: always
+    volumes:
+      - ./conf:/verdaccio/conf
+      - ./storage:/verdaccio/storage
+      - ./plugins:/verdaccio/plugins
+    environment:
+      - VIRTUAL_PORT=4873
+      - VIRTUAL_HOST=verdaccio.nguyenantoine.com
+      - LETSENCRYPT_HOST=verdaccio.nguyenantoine.com
+      - LETSENCRYPT_EMAIL=antoine.ngu@outlook.fr
+networks:
+  reverse-proxy:
+    external:
+      name: reverse-proxy
+

@@ -1,4 +1,4 @@
 conf/htpasswd
 plugins/*
 storage/*
-
+.env
